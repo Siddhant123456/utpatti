@@ -1,0 +1,30 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}
+
+Crop Store
+{% endblock title %}
+
+
+
+
+{% block body %}
+<div class = "container my-5">
+    <div class = "row" style = "justify-content : center;">
+        {% for crop in crops %}
+            <div class="card" style="width: 18rem; margin : 1rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{crop.crop_name}} by {{crop.farmer}}</h5>
+                    <small>{{crop.stock}} Quintal</small>
+                    <p class="card-text">{{crop.crop_desc}}</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}
+
+
+

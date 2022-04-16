@@ -1,0 +1,19 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}
+
+Crop Name
+{% endblock title %}
+
+
+{% block body %}
+
+{% for cr in crop %}
+
+    <h1>{{cr.crop_name}}<h1>
+    <h2>{{cr.farmer}}</h2>
+{% endfor %}
+
+
+
+{% endblock body %}

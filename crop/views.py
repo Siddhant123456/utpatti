@@ -1,3 +1,4 @@
+from ast import If
 import crop
 from django.http.response import HttpResponse
 from account.models import FarmerProfile
@@ -72,14 +73,39 @@ def store(request):
     data = {
         'crops' : all_crops
     }
-    print(data)
-
+    
     return render(request,'crops/store.html',data)
         
 
 
 
 
+def search(request):
+    query = request.GET['crop']
+    query = query.strip().capitalize()
+    all_crops = []
+    if query == '':
+        all_crops = Crop.objects.all()
+    else:
+        all_crops = Crop.objects.filter(crop_name = query)
+
+    data = {
+        'crops' : all_crops
+    }
+    
+    return render(request,'crops/store.html',data)
 
 
 
+
+
+
+def individual_crop(request , id):
+    crop_info = Crop.objects.filter(id = id)
+
+    
+    data = {
+        'crop' : crop_info
+    }
+
+    return render(request ,'crops/individual_crop.html', data)

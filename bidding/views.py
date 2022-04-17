@@ -13,8 +13,6 @@ def place_bid(request):
     crop_info = Crop.objects.get(id = crop)
     bid = Bid.objects.get(bid_for_crop = crop_info)
 
-    
-
     new_bid = BidEntry()
     new_bid.bid = bid
     new_bid.merchant_bidding = user_prof
@@ -22,6 +20,8 @@ def place_bid(request):
     new_bid.bid_time = time
 
     new_bid.save()
+
+    
 
     
 

@@ -24,7 +24,7 @@ h3 {
 	border-color: var(--accent);
 	outline: none;
 }
-button{
+/*button{
 	background-color: var(--accent) !important;
 	color:white !important;
 }
@@ -32,10 +32,10 @@ button{
 	color: #fff;
 	
 }
-.active{
+ .active{
 	background-color: var(--accent) !important;
 	border-color: var(--accent) !important;
-}
+} */
 .navbar-brand h2{
 	font-family: 'Cookie', cursive;
 	font-size: 3.1rem;

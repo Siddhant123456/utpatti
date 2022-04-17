@@ -12,5 +12,6 @@ urlpatterns = [
     path('',views.home, name = "home"),
     path('account/',include('account.urls')),
     path('crop/',include('crop.urls')),
+    path('bidding/', include('bidding.urls')),
     
 ] + static(settings.MEDIA_URL , document_root = MEDIA_ROOT)

@@ -1,13 +1,13 @@
 {% extends 'includes/base.html' %} {% load static %} {% block title %} Upload a
-New Crop {% endblock title %} {% block body %}
+New Crop {% endblock title %} {% block mainarea %}
 <div class="container">
   {% include 'messages.html' %}
   <h2 class="text-center mt-5 mb-5 animate__animated animate__slideInDown">
     Upload a Crop
   </h2>
   <div class="row">
-    {% include 'includes/dashboardSideBar.html' %}
-    <main class="col-md-9 my-2">
+    
+    <main>
       <article class="card w-100">
         <header class="card-header">
           <strong class="d-inline-block mr-3">Enter Crop Details</strong>
@@ -82,4 +82,4 @@ New Crop {% endblock title %} {% block body %}
   </div>
 </div>
 
-{% endblock body %}
+{% endblock mainarea %}

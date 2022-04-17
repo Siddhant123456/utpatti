@@ -5,15 +5,16 @@
 {% endblock title %}
 
 
-{% block body %}
+{% block mainarea %}
 
-    <main class="login container">
+    <!-- <main class="login container"> -->
+    <main class="container">
     <h1 class="text-center mt-5 mb-5 animate__animated animate__slideInDown">
       Login
     </h1>
     {% include 'messages.html' %}
     <div class = "row">
-    <div class = "col-md-4 offset-md-4">
+    <div class = "col-md-12 offset-md-12">
     {% comment %} {% include 'messages.html' %} {% endcomment %}
     </div>
     </div>
@@ -22,7 +23,7 @@
         <img src="{% static 'images/mobile-login.jpg' %}" class="img-fluid" alt="img">
       </div>
       
-      <form method = "POST" action = "{% url 'login' %}" class="col-md-5 offset-1 my-5">
+      <form method = "POST" action = "{% url 'login' %}" class="col-md-5 my-5">
       {% csrf_token %}
         <div class="form-group">
           <input type="email" name = "email" class="form-control" placeholder="Email" required>
@@ -46,4 +47,4 @@
     </div>
   </main>
 
-{% endblock body %}
+{% endblock mainarea %}

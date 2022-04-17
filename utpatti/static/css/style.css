@@ -74,5 +74,45 @@ footer .container {
 	left: 0;
 }
 
+.cname {
+	color: rgb(105, 105, 11);
 
+} 
 
+.fname {
+	color: rgb(36, 36, 118);
+}
+
+.fname:hover {
+	color:rgb(36, 36, 118);
+	font-size: 1.15em;
+	text-decoration: none;
+}
+
+.mname {
+	color: rgb(118, 25, 25);
+}
+
+.font-caption {
+	font-size: 1.01em;
+	color: rgb(69, 69, 69);
+	/* text-transform: uppercase; */
+}
+
+.font-cation-desc {
+	font-size: 0.5em;
+	font-style: italic !important;
+	color: rgb(138, 139, 135);
+	
+}
+
+.f-button {
+	border: 0.5px solid black;
+	border-radius: 25px;
+	box-shadow: 0 0 5px 2px rgb(200, 200, 200);
+
+}
+
+.f-button:hover {
+	background-color: rgb(192, 220, 192);
+}

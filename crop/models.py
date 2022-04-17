@@ -1,11 +1,9 @@
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your models here.
 
 from account.models import FarmerProfile,UserProfile
-
-
-
 
 
 class Crop(models.Model):
@@ -24,12 +22,14 @@ class Crop(models.Model):
     created_date = models.DateTimeField(auto_now_add = True)
     modified_date = models.DateTimeField(auto_now = True)
 
-
-
-
     def __str__(self):
         return self.crop_name
 
+    def getBid(self):
+        try:
+            self.bid
+        except ObjectDoesNotExist:
+            return False
 
 
 class MerchantCrop(models.Model):

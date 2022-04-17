@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
 from .models import Crop
+from bidding.models import Bid, BidEntry
 # Create your views here.
 
 
@@ -101,11 +102,39 @@ def search(request):
 
 
 def individual_crop(request , id):
-    crop_info = Crop.objects.filter(id = id)
+    crop_info = Crop.objects.get(id = id)
+    bid = []
+    data = {}
+    curr_price = 0
+
+    try: 
+        bid = Bid.objects.get(bid_for_crop = crop_info)
+        curr_price = bid.base_price
+    except:
+        pass
+
+    try:
+        all_bids = BidEntry.objects.filter(bid = bid).order_by('-bid_price')
+        if all_bids is not None:
+            curr_price = all_bids[0].bid_price
+        data = {
+            'cr' : crop_info,
+            'bid' : bid,
+            'all_bids' : all_bids,
+            'curr_price' : curr_price
+        }
+
+    except:
+        data = {
+            'cr' : crop_info,
+            'bid' : None,
+            'all_bids' : None,
+            'curr_price' : curr_price
+        }
+
+
+
 
     
-    data = {
-        'crop' : crop_info
-    }
 
     return render(request ,'crops/individual_crop.html', data)

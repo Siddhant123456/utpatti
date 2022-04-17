@@ -1,12 +1,12 @@
-{% extends 'includes/base.html' %} {% block title %} Dashboard {% endblock title%} {% block body %}
+{% extends 'includes/base.html' %} {% block title %} Dashboard {% endblock title%} {% block mainarea %}
 <div class="container">
 <h2 class="text-center mt-5 mb-5 animate__animated animate__slideInDown">
       Dashboard
     </h2>
   {% include 'messages.html' %}
   <div class="row">
-    {% include 'includes/dashboardSideBar.html' %}
-    <main class="col-md-9 my-2">
+    
+    <main>
       <article class="card w-100">
         <header class="card-header">
           <strong class="d-inline-block mr-3">Edit Your Profile</strong>
@@ -208,4 +208,4 @@
   <!-- row.// -->
 </div>
 
-{% endblock body %}
+{% endblock mainarea %}

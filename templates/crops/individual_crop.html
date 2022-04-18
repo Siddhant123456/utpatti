@@ -8,13 +8,15 @@ Crop Name
 
 {% block mainarea %}
 
-    
     <div class="container">
         <div class="row border border-blacked rounded p-3 w-100">
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                 <h3 class="cname">{{cr.crop_name}}</h3>
                 <p class="font-caption-desc">{{cr.crop_desc}}</p>
-                <p class="font-caption">Produced by: <a href="{% url 'profile' cr.farmer %}" class="fname">{{cr.farmer}}</a></p>
+                <!-- <p class="font-caption">Produced by: <a href="{% url 'get_farmer_profile' cr.farmer %}" class="fname">{{cr.farmer}}</a></p> -->
+                
+                <p class="font-caption">Produced by: <a href="#" class="fname">{{cr.farmer}}</a></p>
+                
                 <p class="font-caption">Season: {{cr.season}}Rabi</p>
                 <p class="font-caption">Stock Available: {{cr.stock}} quintels.</p>
                 <p class="font-caption">Approximate Price (₹ per quinter): {{cr.price}}</p>
@@ -124,7 +126,6 @@ Crop Name
 
 
     </script>
-
 
 
 {% endblock mainarea %}

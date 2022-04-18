@@ -438,3 +438,17 @@ def otp_verify(request):
 
 
     return render(request,"accounts/otp_verify.html")
+
+
+
+
+
+def farmers(request):
+
+    all_farmers = FarmerProfile.objects.all()
+
+    data = {
+        'all_farmers' : all_farmers
+    }
+
+    return render(request , 'accounts/farmers.html', data)

@@ -7,7 +7,6 @@ from account.models import UserProfile
 
 
 class Bid(models.Model):
-    bid_id = models.CharField(primary_key=True, max_length=10)
     bid_start_date = models.DateField(blank=False, default=date.today)
     bid_close_date = models.DateField(blank=False, default=date.today)
     base_price = models.FloatField(blank=False, default=0.0)

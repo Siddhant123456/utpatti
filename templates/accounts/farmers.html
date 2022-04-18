@@ -1,0 +1,27 @@
+{% extends 'includes/base.html' %}
+
+
+{% block mainarea %}
+
+
+
+<div class = "row">
+    <h2>Farmers<h2>
+    {% for farmer in all_farmers %}
+        <div class="card" style="width: 18rem; margin : 1rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{farmer.user.full_name}}</h5>
+                <h6>Unique Id: {{farmer.id}}</h6>
+                <h6>{{farmer.city}}</h6>
+                <h6 class="card-text">DOB: {{farmer.dob}}</h6>
+                <a href="#" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock mainarea %}
+
+
+
+

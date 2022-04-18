@@ -34,7 +34,7 @@ Crop Name
                     {% endif %}
 
                 <!------------- Participate in placing a bid ------------------->
-                {% else %}
+                {% elif user.is_authenticated %}
                   {% if curr_price is not None %}
                     <form method = "POST" action = "{% url 'place_bid' %}">
                       {% csrf_token %}
@@ -50,7 +50,7 @@ Crop Name
                         
                     <form>
                   
-                  
+                  {% endif %}
                 {% else %}
 
                 <!------------------------- Display Bids ------------------------->      

@@ -22,15 +22,19 @@ Crop Name
                 <!-------------------- Create New Bid ------------------------>
                 {% if user.isFarmer %}
                    {% if not bid %}
-                    <form action="{% url 'create_bid' cr.id %}" method="POST">
-                      {% csrf_token %}
-                        <ul>
-                            Base Price: <input type="number" id="base_price" name="base_price" class="bid-in">
-                            Last Date: <input type="date" id="l_date" name="last_date" class="bid-in"> 
-                        </ul>
-                        <p><button class="f-button px-3 py-1" type="submit">Create Bid</button></p>
-                    </form>
-                       
+                      {% if cr.farmer.user.id == user.id %}
+                      
+                      <form action="{% url 'create_bid' cr.id %}" method="POST">
+                        {% csrf_token %}
+                          <ul>
+                              Base Price: <input type="number" id="base_price" name="base_price" class="bid-in">
+                              Last Date: <input type="date" id="l_date" name="last_date" class="bid-in"> 
+                          </ul>
+                          <p><button class="f-button px-3 py-1" type="submit">Create Bid</button></p>
+                      </form>
+                          
+                      
+                      {% endif %}
                     {% endif %}
 
                 <!------------- Participate in placing a bid ------------------->

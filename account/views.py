@@ -452,3 +452,15 @@ def farmers(request):
     }
 
     return render(request , 'accounts/farmers.html', data)
+
+
+
+def merchants(request):
+    
+    all_merchants = UserProfile.objects.all()
+
+    data = {
+        'all_merchants' : all_merchants
+    }
+
+    return render(request , 'accounts/merchants.html' , data)

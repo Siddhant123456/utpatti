@@ -14,6 +14,6 @@ urlpatterns = [
     path('forgot_password/',views.forgot_password,name = "forgot_password"),
     path('login_otp/',views.login_otp,name = "login_otp"),
     path('otp_verify/',views.otp_verify,name = "otp_verify"),
-    path('farmers/',views.farmers , name = "farmers")
-    
+    path('farmers/',views.farmers , name = "farmers"),
+    path('merchants/' , views.merchants , name = "merchants")
 ]

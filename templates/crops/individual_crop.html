@@ -18,32 +18,45 @@ Crop Name
                 <p class="font-caption">Season: {{cr.season}}Rabi</p>
                 <p class="font-caption">Stock Available: {{cr.stock}} quintels.</p>
                 <p class="font-caption">Approximate Price (₹ per quinter): {{cr.price}}</p>
-                {% if user.isFarmer %}
-                   
-                
-                    <p><button class="f-button px-3 py-1" type>Create Bid</button></p>
-                        
-                {% else %}
-                  {% if curr_price is not None %}
-                  <form method = "POST" action = "{% url 'place_bid' %}">
-                    {% csrf_token %}
-                    <div>
-                      <h4>Current Bid : {% if curr_price is not None %} {{curr_price}} {% else %} 0 {% endif %}</h4>
-                      Your Bid:  <input type = "number" id = "bid_price" name = "amount">
-                      <br />
-                      <br />
-                      <input type = "hidden" value = "{{cr.id}}" name = "crop">
-                      <p><button class="f-button px-3 py-1"  onclick = "return myfunc()" type = "submit">Bid Now</button></p>
 
-                    </div>
-                      
-                  <form>
+                <!-------------------- Create New Bid ------------------------>
+                {% if user.isFarmer %}
+                   {% if not bid %}
+                    <form action="{% url 'create_bid' cr.id %}" method="POST">
+                      {% csrf_token %}
+                        <ul>
+                            Base Price: <input type="number" id="base_price" name="base_price" class="bid-in">
+                            Last Date: <input type="date" id="l_date" name="last_date" class="bid-in"> 
+                        </ul>
+                        <p><button class="f-button px-3 py-1" type="submit">Create Bid</button></p>
+                    </form>
+                       
+                    {% endif %}
+
+                <!------------- Participate in placing a bid ------------------->
+                {% elif user.isMerchant %}
+                  {% if curr_price is not None %}
+                    <form method = "POST" action = "{% url 'place_bid' %}">
+                      {% csrf_token %}
+                      <div>
+                        <h4>Current Bid : {% if curr_price is not None %} {{curr_price}} {% else %} 0 {% endif %}</h4>
+                        Your Bid:  <input type = "number" id = "bid_price" name = "amount">
+                        <br />
+                        <br />
+                        <input type = "hidden" value = "{{cr.id}}" name = "crop">
+                        <p><button class="f-button px-3 py-1"  onclick = "myfunc()" type = "submit">Bid Now</button></p>
+
+                      </div>
+                        
+                    <form>
                   
                   {% endif %}
+                {% else %}
+
+                <!------------------------- Display Bids ------------------------->      
 
 
-                {% endif %}
-
+                {% endif %}    
 
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 pr-3 pt-0 mt-0">

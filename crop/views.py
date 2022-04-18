@@ -104,7 +104,7 @@ def search(request):
 def individual_crop(request , id):
     crop_info = Crop.objects.get(id = id)
     bid = []
-    all_bids = []
+    bid_entries = []
     data = {}
     curr_price = 0
 
@@ -116,12 +116,20 @@ def individual_crop(request , id):
 
     try:
         all_bids = BidEntry.objects.filter(bid = bid).order_by('-bid_price')
+        for e in all_bids:
+            merchant_name = e.merchant_bidding.name
+            bid_entries.append({
+                "b_merchant": merchant_name, 
+                "b_price": e.bid_price
+            })
+        print(all_bids)
+        print(bid_entries)
         if all_bids is not None:
             curr_price = all_bids[0].bid_price
         data = {
             'cr' : crop_info,
             'bid' : bid,
-            'all_bids' : all_bids,
+            'all_bids' : bid_entries,
             'curr_price' : curr_price
         }
 
@@ -129,7 +137,7 @@ def individual_crop(request , id):
         data = {
             'cr' : crop_info,
             'bid' : bid,
-            'all_bids' : all_bids,
+            'all_bids' : bid_entries,
             'curr_price' : curr_price
         }
 

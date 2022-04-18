@@ -433,8 +433,66 @@ def otp_verify(request):
             return redirect('otp_verify')
 
 
-        
-
-
-
     return render(request,"accounts/otp_verify.html")
+
+
+
+def view_profile(request, id):
+    print("View Enter Final")
+    a_id = Account.objects.get(id = id)
+    print(a_id)
+    profile_type = a_id.profile
+    a_name = a_id.full_name()
+    p_info = {
+        "pname": a_name,
+        "email": a_id.email, 
+        "phone_no": a_id.phone_number,
+    }
+    print(profile_type)
+    if(profile_type == "farmer"):
+        f_id = FarmerProfile.objects.get(user=a_id)
+        print(f_id)
+        print(f_id.state)
+        p_info["address1"] = f_id.address_line_1
+        p_info["city"] = f_id.city
+        p_info["state"] = f_id.state
+        p_info["country"] = f_id.country
+        p_info["image"] = f_id.image
+        p_info["adhr_no"] = f_id.aadhar_number
+    
+    else:
+        m_id = UserProfile.objects.get(user=a_id)
+        p_info["address1"] = m_id.address_line_1
+        p_info["city"] = m_id.city
+        p_info["state"] = m_id.state
+        p_info["country"] = m_id.country
+        p_info["image"] = m_id.image
+        p_info["adhr_no"] = m_id.aadhar_number
+
+    data = {
+        'p_info': p_info,
+    }
+
+    print(p_info)
+
+
+    return render(request,'accounts/user_profile.html', data)
+    
+
+
+
+def get_farmer_profile(Request, fob):
+    print(fob)
+    farmer_ob = FarmerProfile.objects.get(user=fob)
+    print(farmer_ob)
+    account = Account.objects.get(id=farmer_ob)
+    print(account)
+    acc_id = account.id
+    print(acc_id)
+
+    
+    
+    return redirect('view_profile', acc_id)
+
+
+

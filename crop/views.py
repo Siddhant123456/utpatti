@@ -104,6 +104,7 @@ def search(request):
 def individual_crop(request , id):
     crop_info = Crop.objects.get(id = id)
     bid = []
+    all_bids = []
     data = {}
     curr_price = 0
 
@@ -127,14 +128,9 @@ def individual_crop(request , id):
     except:
         data = {
             'cr' : crop_info,
-            'bid' : None,
-            'all_bids' : None,
+            'bid' : bid,
+            'all_bids' : all_bids,
             'curr_price' : curr_price
         }
-
-
-
-
-    
 
     return render(request ,'crops/individual_crop.html', data)

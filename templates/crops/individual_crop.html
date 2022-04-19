@@ -8,14 +8,24 @@ Crop Name
 
 {% block mainarea %}
 
-    <div class="container">
+    
+      <div class="col-lg-4 col-md-4 col-sm-4 mx-4">
+      <div class="border border-blacked rounded px-4 py-2">
+          <h5 class="py-2 text-center">Recent Bids:</h5>
+          {% for bid_entry in all_bids %}
+            <p class="py-2">{{bid_entry.merchant_bidding.user.full_name}}  <span class="float-right" style="color:rgb(67, 117, 55)"><b>₹ {{bid_entry.bid_price}}</b></span></p>
+          {% endfor %}
+        </div>
+      
+    </div>
+       
         <div class="row border border-blacked rounded p-3 w-100">
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                 <h3 class="cname">{{cr.crop_name}}</h3>
                 <p class="font-caption-desc">{{cr.crop_desc}}</p>
-                <!-- <p class="font-caption">Produced by: <a href="{% url 'get_farmer_profile' cr.farmer %}" class="fname">{{cr.farmer}}</a></p> -->
+                <p class="font-caption">Produced by: <a href="{% url 'view_profile' cr.farmer.user.id %}" class="fname">{{cr.farmer}}</a></p>
                 
-                <p class="font-caption">Produced by: <a href="#" class="fname">{{cr.farmer}}</a></p>
+               
                 
                 <p class="font-caption">Season: {{cr.season}}Rabi</p>
                 <p class="font-caption">Stock Available: {{cr.stock}} quintels.</p>
@@ -24,15 +34,19 @@ Crop Name
                 <!-------------------- Create New Bid ------------------------>
                 {% if user.isFarmer %}
                    {% if not bid %}
-                    <form action="{% url 'create_bid' cr.id %}" method="POST">
-                      {% csrf_token %}
-                        <ul>
-                            Base Price: <input type="number" id="base_price" name="base_price" class="bid-in">
-                            Last Date: <input type="date" id="l_date" name="last_date" class="bid-in"> 
-                        </ul>
-                        <p><button class="f-button px-3 py-1" type="submit">Create Bid</button></p>
-                    </form>
-                       
+                      {% if cr.farmer.user.id == user.id %}
+                      
+                      <form action="{% url 'create_bid' cr.id %}" method="POST">
+                        {% csrf_token %}
+                          <ul>
+                              Base Price: <input type="number" id="base_price" name="base_price" class="bid-in">
+                              Last Date: <input type="date" id="l_date" name="last_date" class="bid-in"> 
+                          </ul>
+                          <p><button class="f-button px-3 py-1" type="submit">Create Bid</button></p>
+                      </form>
+                          
+                      
+                      {% endif %}
                     {% endif %}
 
                 <!------------- Participate in placing a bid ------------------->
@@ -40,15 +54,14 @@ Crop Name
                   {% if curr_price is not None %}
                     <form method = "POST" action = "{% url 'place_bid' %}">
                       {% csrf_token %}
-                      <div>
-                        <h4>Current Bid : {% if curr_price is not None %} {{curr_price}} {% else %} 0 {% endif %}</h4>
-                        Your Bid:  <input type = "number" id = "bid_price" name = "amount">
-                        <br />
-                        <br />
-                        <input type = "hidden" value = "{{cr.id}}" name = "crop">
-                        <p><button class="f-button px-3 py-1"  onclick = "myfunc()" type = "submit">Bid Now</button></p>
-
-                      </div>
+                      
+                      <p class="font-caption pb-3"  style="color:rgb(67, 117, 55)"><strong>Current Bid : ₹ {% if curr_price is not None %} {{curr_price}} {% else %} {% endif %}</strong></p>
+                      <!-- <div class="form-group mx-sm-3 mb-2 d-inline"> -->
+                        Your Bid:  <input type = "number" id = "bid_price" name = "amount" class=" d-inline mx-2" style="border-radius: 10px; border:0.5px solid black">
+                          <input type = "hidden" value = "{{cr.id}}" name = "crop" class="form-control form-control-sm">
+                        <!-- </div>   -->
+                        <button class="d-inline f-button px-3 py-1 float-right"  onclick = "myfunc()" type = "submit">Bid Now</button>
+                      
                         
                     <form>
                   
@@ -68,7 +81,7 @@ Crop Name
                     <i class="bi bi-slash-circle-fill" style="font-size: 1rem; color: rgb(120, 121, 125);" title="Not Available"></i><span>Not Available</span>
                 {% endif %}
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-3 py-4">
 
                 <!-- ---------------------Carousal of crop images---------------------- -->
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -99,7 +112,8 @@ Crop Name
                   </div>
             </div>
         </div>
-    </div>
+      
+    
     
 
     <script>

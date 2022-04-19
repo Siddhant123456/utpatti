@@ -40,7 +40,7 @@ def place_bid(request):
     new_bid.bid_time = date
 
     new_bid.save()
-
+    print("new", new_bid)
     return redirect('individual_crop' , crop_info.id)
 
     

@@ -496,3 +496,30 @@ def get_farmer_profile(Request, fob):
 
 
 
+    return render(request,"accounts/otp_verify.html")
+
+
+
+
+
+def farmers(request):
+
+    all_farmers = FarmerProfile.objects.all()
+
+    data = {
+        'all_farmers' : all_farmers
+    }
+
+    return render(request , 'accounts/farmers.html', data)
+
+
+
+def merchants(request):
+    
+    all_merchants = UserProfile.objects.all()
+
+    data = {
+        'all_merchants' : all_merchants
+    }
+
+    return render(request , 'accounts/merchants.html' , data)

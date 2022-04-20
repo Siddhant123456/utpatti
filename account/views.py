@@ -388,7 +388,6 @@ def login_otp(request):
         user = None
         try:
             user = Account.objects.get(phone_number = phone)
-    
         except:
             pass
         
@@ -406,7 +405,6 @@ def login_otp(request):
             return redirect('login_otp')
 
         
-
 
 
     return render(request,'accounts/login_otp.html')

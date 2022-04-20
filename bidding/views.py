@@ -65,9 +65,13 @@ def active_bids(request):
     return render(request, 'bidding/active_bids.html', data) """
 
     all_bids = Bid.objects.filter(bid_close_date__gte = date_today)
-    print("all bids",all_bids)
-    print("all bids",all_bids[0].bid_close_date)
-    #data = { "all_bids": all_bids }
+    if all_bids.count() == 0:
+        
+        messages.info(request, "No active bids now")
+       
+        a_url = request.META.get('HTTP_REFERER')
+       
+        return redirect(a_url)
     
     return render(request, 'bidding/active_bids.html', { "all_bids": all_bids }) 
     

@@ -3,6 +3,8 @@ from .models import Bid, BidEntry
 from crop.models import Crop
 from account.models import UserProfile
 import datetime
+from django.http import HttpResponse
+
 
 def create_bid(request, id):
     print("Hello")
@@ -43,4 +45,27 @@ def place_bid(request):
     print("new", new_bid)
     return redirect('individual_crop' , crop_info.id)
 
+def active_bids(request):
+    #all_active_bids = []
+    date_today = datetime.datetime.today()
+    print(date_today)
+    
+    """ all_bids = Bid.objects.all()    
+    print("all bids obj", all_bids)
+    for b in all_bids:
+        is_act = b.is_bid_active
+        print("b is",is_act)
+        if is_act == True:
+            all_active_bids.append(b)
+    print("all bids list", all_active_bids)
+    data = {'all_active_bids': all_active_bids}
+    print("data", data)
+    return render(request, 'bidding/active_bids.html', data) """
+
+    all_bids = Bid.objects.filter(bid_close_date__gte = date_today)
+    print("all bids",all_bids)
+    print("all bids",all_bids[0].bid_close_date)
+    #data = { "all_bids": all_bids }
+    
+    return render(request, 'bidding/active_bids.html', { "all_bids": all_bids }) 
     

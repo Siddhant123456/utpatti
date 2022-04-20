@@ -19,7 +19,7 @@
                 <!-- <h6>{{crop.farmer}}</h6> -->
                 <small>{{crop.stock}} Quintal</small>
                 <p class="card-text">{{crop.crop_desc}}</p>
-                <a href="{% url 'individual_crop' crop.id %}" class="btn btn-primary">View</a>
+                <a href="{% url 'individual_crop' crop.id %}" class="btn btn-primary" style="background: #264ca4 !important; border: none !important;">View</a>
             </div>
         </div>
     {% endfor %}

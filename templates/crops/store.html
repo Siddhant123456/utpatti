@@ -10,6 +10,7 @@ Crop Store
 
 {% block mainarea %}
 <div class = "container my-5">
+    {% include 'messages.html' %}
     <form method="get" action={% url 'search' %}>
 
     <div class="input-group rounded">
@@ -23,6 +24,7 @@ Crop Store
     </div>
 </form>
     <div class = "row">
+        
         {% for crop in crops %}
             <div class="card" style="width: 18rem; margin : 1rem;">
                 <div class="card-body">

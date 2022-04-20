@@ -4,22 +4,22 @@
 {% block mainarea %}
 
 
-
-<div class = "row">
-    
-    {% for merchant in all_merchants %}
-        <div class="card" style="width: 18rem; margin : 1rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{merchant.user.full_name}}</h5>
-                <h6>Unique Id: {{merchant.user.id}}</h6>
-                <h6>{{merchant.city}}</h6>
-                <h6 class="card-text">DOB: {{merchant.dob}}</h6>
-                <a href="{% url 'view_profile' merchant.user.id %}" class="btn btn-primary">View</a>
+<div class = "container my-5">
+    <div class = "row">
+        {% include 'messages.html' %}
+        {% for merchant in all_merchants %}
+            <div class="card" style="width: 18rem; margin : 1rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{merchant.user.full_name}}</h5>
+                    <h6>Unique Id: {{merchant.user.id}}</h6>
+                    <h6>{{merchant.city}}</h6>
+                    <h6 class="card-text">DOB: {{merchant.dob}}</h6>
+                    <a href="{% url 'view_profile' merchant.user.id %}" class="btn btn-primary">View</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
-
 {% endblock mainarea %}
 
 

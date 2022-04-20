@@ -1,4 +1,4 @@
-<aside class="my-2">
+<aside >
 		<div class="list-group">
   <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action {% if '/dashboard/' in request.path %}active{% endif %}">
     My Profile
@@ -10,8 +10,8 @@
     <a href="#" class="list-group-item list-group-item-action {% if '/predict/' in request.path %}active{% endif %}">Predict Crop Yield</a>
   
   {% else %}
-    <a href="#" class="list-group-item list-group-item-action {% if '/orders/' in request.path %}active{% endif %}">View Orders</a>
-    <a href="#" class="list-group-item list-group-item-action {% if '/bids/' in request.path %}active{% endif %}">View Your Bids</a>
+    
+    <a href="{% url 'view_bids' %}" class="list-group-item list-group-item-action {% if '/view_bids' in request.path %}active{% endif %}">View Your Bids</a>
   
   {% endif %}
   

@@ -1,8 +1,6 @@
 {% extends 'includes/base.html' %} {% block title %} Dashboard {% endblock title%} {% block mainarea %}
 <div class="container">
-<h2 class="text-center mt-5 mb-5 animate__animated animate__slideInDown">
-      Dashboard
-    </h2>
+
   {% include 'messages.html' %}
   <div class="row">
     
@@ -12,7 +10,7 @@
           <strong class="d-inline-block mr-3">Edit Your Profile</strong>
         </header>
         <div class="card-body w-100">
-          <div class="text-center">
+         <!--  <div class="text-center">
             <a
               onmouseout="removeText()"
               onmouseover="changeText()"
@@ -30,8 +28,8 @@
                 style="border-radius: 100px"
                 alt="Profile Picture" /><span id="update"></span
             ></a>
-          </div>
-          <br />
+          </div> -->
+          
           <div class="row">
             <div class="col-md-12">
               <form method="POST" action="{% url 'dashboard' %}" enctype="multipart/form-data">

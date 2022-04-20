@@ -10,17 +10,19 @@
 
 
 {% block mainarea %}
-    <div class = "container">
-    <h2 class="text-center mt-5 mb-5 animate__animated animate__slideInDown">
-      View Your Crops
-    </h2>
-        
-        
-
-        
-
-    </div>
-
+  <div class = "row">
+    {% for crop in crops %}
+        <div class="card" style="width: 18rem;  margin-bottom : 1rem; margin-left: 1rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{crop.crop_name}}</h5>
+                <!-- <h6>{{crop.farmer}}</h6> -->
+                <small>{{crop.stock}} Quintal</small>
+                <p class="card-text">{{crop.crop_desc}}</p>
+                <a href="{% url 'individual_crop' crop.id %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    {% endfor %}
+  </div>
 
 {% endblock mainarea %}
 

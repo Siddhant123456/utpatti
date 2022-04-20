@@ -30,8 +30,13 @@ Crop Name
                 <p class="font-caption">Season: {{cr.season}}Rabi</p>
                 <p class="font-caption">Stock Available: {{cr.stock}} quintels.</p>
                 <p class="font-caption">Approximate Price (₹ per quinter): {{cr.price}}</p>
-
+                {% if bid %}
                 
+                  <p class="font-caption pb-3"  style="color:rgb(67, 117, 55)"><strong>Current Bid : ₹ {% if curr_price is not None %} {{curr_price}} {% else %} {% endif %}</strong></p>
+                        
+                  Bid Closing in: <b><span class = "" id = "demo"></span></b><p></p>
+
+                {% endif %}
                 <!-------------------- Create New Bid ------------------------>
                 {% if user.isFarmer %}
                    {% if not bid %}
@@ -52,14 +57,11 @@ Crop Name
 
                 <!------------- Participate in placing a bid ------------------->
                 {% elif user.is_authenticated %}
-                  {% if curr_price is not None %}
+                  {% if curr_price is not None and bid %}
                     <form method = "POST" action = "{% url 'place_bid' %}">
                       {% csrf_token %}
                       
-                      <p class="font-caption pb-3"  style="color:rgb(67, 117, 55)"><strong>Current Bid : ₹ {% if curr_price is not None %} {{curr_price}} {% else %} {% endif %}</strong></p>
-                      <!-- <div class="form-group mx-sm-3 mb-2 d-inline"> -->
-                        Bid Closing in: <b><span class = "" id = "demo"></span>
-                        <p></p>
+                      
 
                         Your Bid:  <input type = "number" id = "bid_price" name = "amount" class=" d-inline mx-2" style="border-radius: 10px; border:0.5px solid black">
                           <input type = "hidden" value = "{{cr.id}}" name = "crop" class="form-control form-control-sm">

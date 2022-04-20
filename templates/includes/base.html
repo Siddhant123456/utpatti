@@ -58,9 +58,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
                       </li>    
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'store' %}">Store</a>
-                      </li>    
+                      
 
 
                       <li class="nav-item">
@@ -84,18 +82,22 @@
               </nav>
               <main class="main-screen">
                 
-                  <div class="row mx-auto my-5">
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                      <a href="{% url 'farmers' %}"><img src="{% static 'images/iFarmer.png' %}" width="75px" height="75px" class="rounded-circle mx-auto d-block" alt="Farmers" title="View Farmers"></a>
+                  <div class="row border-bottom shadow-sm bg-white rounded">
+                    <div class="col-lg-3 col-md-3 col-sm-3 shadow bg-white rounded ">
+                      <a href="{% url 'farmers' %}"><img src="{% static 'images/iFarmer.png' %}" width="75px" height="75px" class="rounded-3 mx-auto d-block my-2" alt="Farmers" title="View Farmers"></a>
+                      <p class="font-caption  mx-auto d-block text-center my-2">View Farmers</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                      <a href="{% url 'merchants' %}"><img src="{% static 'images/iMerchant.png' %}" width="75px" height="75px" class="rounded-circle mx-auto d-block" alt="Merchants" title="View Merchants"></a>
+                    <div class="col-lg-3 col-md-3 col-sm-3 shadow bg-white rounded">
+                      <a href="{% url 'merchants' %}"><img src="{% static 'images/iMerchant.png' %}" width="75px" height="75px" class="rounded-3 mx-auto d-block my-2" alt="Merchants" title="View Merchants"></a>
+                      <p class="font-caption  mx-auto d-block text-center my-2">View Merchants</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                      <a href="{% url 'store' %}"><img src="{% static 'images/iCrop.png' %}" width="75px" height="75px" class="rounded-circle mx-auto d-block" alt="Crop" title="View Crops"></a>
+                    <div class="col-lg-3 col-md-3 col-sm-3 shadow bg-white rounded">
+                      <a href="{% url 'store' %}"><img src="{% static 'images/iCrop.png' %}" width="75px" height="75px" class="rounded-3 mx-auto d-block my-2" alt="Crop" title="View Crops"></a>
+                      <p class="font-caption  mx-auto d-block text-center my-2">View Crops</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                      <a href="#"><img src="{% static 'images/iBid.png' %}" width="75px" height="75px" class="rounded-circle mx-auto d-block" alt="Active Biddings" title="View Active Biddings"></a>
+                    <div class="col-lg-3 col-md-3 col-sm-3 shadow bg-white rounded">
+                      <a href="{% url 'active_bids' %}"><img src="{% static 'images/iBid2.png' %}" width="75px" height="75px" class="rounded-3 mx-auto d-block my-2" alt="Active Biddings" title="View Active Biddings"></a>
+                      <p class="font-caption  mx-auto d-block text-center my-2">View Bids</p>
                     </div>
                     <!-- <div class="col-lg-4 col-md-4 col-sm-4">
                       <form>
@@ -103,10 +105,12 @@
                         <a href="#"><i class="bi bi-search"></i></a>
                       </form>
                   </div>  -->
+                </div>
+                
                   {% if user.is_authenticated %}
                          
                 <div class="container main-content my-5">
-                  {% if '/crop/store/' not in request.path %}
+                  {% if '/crop/store/' not in request.path and '/farmers/' not in request.path and '/merchants/' not in request.path and '/active_bids' not in request.path and '/view_profile' not in request.path and request.path != "/" %}
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     
                     {% include 'includes/dashboardSideBar.html' %}

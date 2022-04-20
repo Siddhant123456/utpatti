@@ -4,6 +4,8 @@ from crop.models import Crop
 from account.models import UserProfile
 import datetime
 from django.http import HttpResponse
+from django.contrib import messages
+
 
 
 def create_bid(request, id):
@@ -69,3 +71,21 @@ def active_bids(request):
     
     return render(request, 'bidding/active_bids.html', { "all_bids": all_bids }) 
     
+
+def view_bids(request):
+    user = request.user
+    if user.profile == 'farmer':
+        messages.warning(request,"Invalid Request")
+        return redirect('dashboard')
+
+    merchant = UserProfile.objects.get(user=user)
+
+    bids = BidEntry.objects.filter(merchant_bidding=merchant)
+
+    data = {
+        'bids' : bids
+    }
+    print(bids)
+    return render(request,'bidding/view_bids.html',data)
+    
+

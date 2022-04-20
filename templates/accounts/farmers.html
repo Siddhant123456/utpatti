@@ -6,7 +6,7 @@
 
 
 <div class = "row">
-    <h2>Farmers<h2>
+    
     {% for farmer in all_farmers %}
         <div class="card" style="width: 18rem; margin : 1rem;">
             <div class="card-body">
@@ -14,7 +14,7 @@
                 <h6>Unique Id: {{farmer.user.id}}</h6>
                 <h6>{{farmer.city}}</h6>
                 <h6 class="card-text">DOB: {{farmer.dob}}</h6>
-                <a href="#" class="btn btn-primary">View</a>
+                <a href="{% url 'view_profile' farmer.user.id %}" class="btn btn-primary">View</a>
             </div>
         </div>
     {% endfor %}

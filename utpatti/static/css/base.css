@@ -2,11 +2,13 @@
 	--primary: #ffffff;
 	--secondary: #3a3e45;
 	--white: #888787;
-	--accent: #e56237;
+	--accent: #477d42;
 }
 
 body {
 	background-color: var(--primary);
+	background-image: url(../images/LeafLogo1.png);
+
 	color: rgb(54, 54, 54);
 }
 
@@ -18,12 +20,12 @@ h2,
 h3 {
 	color: var(--accent);
 }
-/* .btn-accent {
+.btn-accent {
 	background-color: var(--accent);
 	color: #fff;
 	border-color: var(--accent);
 	outline: none;
-} */
+}
 /*button{
 	background-color: var(--accent) !important;
 	color:white !important;

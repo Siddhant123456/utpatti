@@ -123,3 +123,24 @@ main {
 	display: block !important;
 	margin: auto !important;
 }
+
+#google_translate_element select{
+	background:#ffffff;
+	color:#4d9c4c;
+	border: none;
+	border-radius:3px;
+	padding:6px 8px
+	}
+	.goog-logo-link{
+	  display:none!important;
+	 }
+	.goog-te-gadget{
+	color:transparent!important;
+	} 
+	.goog-te-banner-frame{
+	display:none !important;
+	}
+	
+	#goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+   .goog-text-highlight { background: none !important; box-shadow: none !important;}
+

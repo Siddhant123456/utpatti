@@ -73,7 +73,22 @@
                       </li>
                       {% endif %}
                       <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#"><img src="{% static 'images/Translation.png' %}" width="25" height="25"/></a>
+                        <a class="nav-link " aria-current="page" onclick="translate_site();"><img src="{% static 'images/Translation.png' %}" width="25" height="25" /></a>
+                        
+                      </li>
+                      <li class="nav-item" id="google-translate-banner" style="display:none;">
+                        <div id="google_translate_element" style="background-image: url(./../../utpatti/static/images/translation.png)"></div> 
+                        <script type="text/javascript"> 
+                            function googleTranslateElementInit() { 
+                                new google.translate.TranslateElement(
+                                    {pageLanguage: 'en'}, 
+                                    'google_translate_element'
+                                ); 
+                            } 
+                        </script> 
+                          
+                        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+                        </script> 
                       </li>
                     </ul>
                     
@@ -134,7 +149,19 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="{% static './js/script.js'%}"></script>
-  
+  <script  type="text/javascript">
+    function translate_site() {
+      console.log("Enters func")
+      var g_trans = document.getElementById("google-translate-banner")
+      console.log(g_trans)
+      if(g_trans.style.display === "none") {
+          g_trans.style.display = "inline"
+      }
+      else  
+        g_trans.style.display = "none"
+      console.log(g_trans.style.display)
+    }
+  </script>
 
 </body>
 </html>

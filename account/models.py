@@ -44,7 +44,7 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True)
 
     email = models.EmailField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=50, unique=True)
+    phone_number = models.CharField(max_length=50, unique=True, blank=True)
 
     profile = models.CharField(max_length=20, default="merchant")
     otp = models.CharField(max_length=10, default=0, blank=True)

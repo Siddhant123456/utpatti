@@ -12,6 +12,7 @@ import random
 import http.client
 
 
+import requests
 
 # verification email
 
@@ -361,16 +362,50 @@ def forgot_password(request):
         return render(request, 'accounts/forgot_password.html')
 
 
-
 def send_otp(mobile,otp):
-    conn = http.client.HTTPSConnection("api.msg91.com")
-    authkey = '366634A28zEvb861307a8cP1'
-    headers = { 'content-type': "application/json" }
-    message = f"Your Otp is {otp}"
-    url = f"http://control.msg91.com/api/sendotp.php?otp={otp}&message={otp}&mobile={mobile}&authkey={authkey}&country=91"
-    conn.request("GET",url,headers=headers)
-    res = conn.getresponse()
-    data = res.read()
+
+    authKey = "OTk2o1zrBQqv0MWdDwX49jmnVCLelafiFphybUcZuPIYEAxJ3gJaxQXrkq8NFMEGKO0B75AztjbnUgow"
+    url2 = "https://www.fast2sms.com/dev/bulkV2"
+
+
+
+    querystring = {"authorization":authKey,"variables_values":otp,"route":"otp","numbers":mobile}
+
+
+    headers = {
+        'cache-control': "no-cache"
+    }
+    response = requests.request("GET", url2, headers=headers, params=querystring)
+    print(response.text)
+    return None
+
+    # conn = http.client.HTTPSConnection("api.msg91.com")
+
+    # authkey = '376012AN8Ba55FJ62613961P1'
+    # headers = { 'content-type': "application/json"}
+    # message = f"YourOtpis{otp}"
+    
+    # mobile_with_code = '91'
+    # mobile_with_code = mobile_with_code + mobile
+    # template_id = "62613b1f2e9d3e6204761165"
+    # id = "testing"
+    # url1 =  f"https://api.msg91.com/api/v5/otp?template_id=62613b1f2e9d3e6204761165&mobile=9882513449&authkey=376012AN8Ba55FJ62613961P1"
+    # url = f"http://control.msg91.com/api/sendotp.php?otp={otp}&message={otp}&mobile={mobile}&authkey={authkey}&country=91"
+    # conn.request("GET",url,headers=headers)
+    # res = conn.getresponse()
+    # data = res.read()
+
+    # print(data)
+
+
+
+
+
+
+
+
+
+    
     return None
 
     

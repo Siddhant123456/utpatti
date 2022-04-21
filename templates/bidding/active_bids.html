@@ -18,7 +18,7 @@ Active Bids
                     <!-- <h6>{{crop.farmer}}</h6> -->
                     <small>Last Date: {{bid.bid_close_date}} Quintal</small>
                     <p class="card-text"></p>
-                    <a href="{% url 'individual_crop' bid.bid_for_crop.id %}" class="btn btn-primary">View</a>
+                    <a href="{% url 'individual_crop' bid.bid_for_crop.id %}" class="btn btn-primary" style="background: #264ca4 !important; border: none !important;">View</a>
                 </div>
             </div>
         {% endfor %}

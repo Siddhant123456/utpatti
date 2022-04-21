@@ -17,7 +17,6 @@ def store(request):
 def upload_crop(request):
     if request.method == 'POST':
         crop_name = request.POST['crop_name']
-        image = request.FILES['img']
         description = request.POST['description']
         base_price = request.POST['base_price']
         stock = request.POST['stock']
@@ -33,7 +32,6 @@ def upload_crop(request):
         crop = Crop()
         crop.crop_name = crop_name
         crop.farmer = farmer
-        crop.crop_image = image
         crop.crop_desc = description
         crop.stock = stock
         crop.price = base_price

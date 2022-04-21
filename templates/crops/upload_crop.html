@@ -31,10 +31,10 @@ New Crop {% endblock title %} {% block mainarea %}
                   />
                 </div>
 
-                <div class="form-group">
+                {% comment %} <div class="form-group">
                   <label>Crop Picture</label>
                   <input type="file" class="form-control" name="img" />
-                </div>
+                </div> {% endcomment %}
 
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Description</label>
@@ -68,7 +68,7 @@ New Crop {% endblock title %} {% block mainarea %}
                   />
                 </div>
 
-                <button class="btn btn-light" type="submit" value="Save">
+                <button class="btn btn-primary" type="submit" value="Save">
                   Upload
                 </button>
               </form>
